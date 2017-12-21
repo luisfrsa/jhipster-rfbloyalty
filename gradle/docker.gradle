@@ -41,9 +41,6 @@ task copyDockerFiles(type: Copy) {
 
 def rfbImageName = 'springframeworkguru/rfbloyalty'
 
-/*
-gradlew bootRepackage -Pprod buildDocker
-
 task buildDocker(type: DockerBuildImage, dependsOn: 'copyDockerFiles') {
     description = "Package application as Docker image"
     group = "Docker"
@@ -53,6 +50,9 @@ task buildDocker(type: DockerBuildImage, dependsOn: 'copyDockerFiles') {
 
 
 /**
+ * gradlew bootRepackage -Pprod buildDocker
+
+
 
  * Use to push latest tag to docker hub
  *
@@ -61,13 +61,13 @@ task buildDocker(type: DockerBuildImage, dependsOn: 'copyDockerFiles') {
 task pushDockerLatest(type: DockerPushImage, dependsOn: 'buildDocker') {
     imageName = rfbImageName
     tag = "latest"
-} */
+}
 
 /**
  * Use to push project version tag to docker hub
- */
+
 task pushDockerVersionTag(type: DockerPushImage, dependsOn: 'buildDocker') {
     imageName = rfbImageName
     tag =  "${project.version}".toString()
 }
-
+ */
