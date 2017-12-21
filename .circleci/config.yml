@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build: 
+  build:
     docker:
       # specify the version you desire here
       - image: springframeworkguru/circleci_build
@@ -40,6 +40,10 @@ jobs:
             - ~/.m2
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
+      - run:
+          name: chmod permissions
+          command: chmod +x ./gradlew
+          
       # run tests and package
       - run: ./gradlew clean test
 
